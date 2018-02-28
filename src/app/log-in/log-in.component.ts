@@ -1,0 +1,50 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { LogInActions } from 'app/store/user/logIn/logIn.actions';
+
+import { FormComponent } from '../helpers/form.component';
+import { StateService } from '../store/state-service/state.service';
+import { emailValid, passwordValid } from '../validators';
+
+@Component({
+    selector: 'app-log-in',
+    templateUrl: './log-in.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+
+export class LogInComponent extends FormComponent {
+
+    controlNames = {
+        email: 'email',
+        password: 'password',
+        rememberMe: 'rememberMe'
+    };
+
+    formState$ = this.state.select(s => s.user.logIn);
+
+    formGroup = this.formBuilder.group({
+        [this.controlNames.email]: ['', emailValid],
+        [this.controlNames.password]: ['', passwordValid],
+        [this.controlNames.rememberMe]: [true]
+    });
+
+    constructor(
+        private state: StateService,
+        private formBuilder: FormBuilder
+    ) {
+        super();
+    }
+
+    hideLogInModal() {
+        this.state.dispatch(new LogInActions.HideModal());
+    }
+
+    emailPasswordLogin() {
+        if (this.formGroup.valid) {
+            this.state.dispatch(new LogInActions.LogIn({
+                email: this.getFormValue(this.controlNames.email, ''),
+                password: this.getFormValue(this.controlNames.password, '')
+            }));
+        }
+    }
+}

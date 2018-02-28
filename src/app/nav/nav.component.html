@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" [class.collapsed]="!(navState$ | async).showNavigation" aria-expanded="false" (click)="toggleNavigation()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">Brand</a>
+    </div>
+    <div [class.collapse]="!(navState$ | async).showNavigation && window.innerWidth < 768">
+      <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn$ | async">
+        <li><button class="btn btn-link navbar-btn" routerLink="/account/profile">Profile</button></li>
+        <li><button class="btn btn-link navbar-btn" routerLink="/account/info">Account</button></li>
+        <li><button class="btn btn-link navbar-btn" (click)="logOut()">Log Out</button></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!(isLoggedIn$ | async)">
+        <li><button routerLink="/sign-up" class="btn btn-default navbar-btn">Sign up</button></li>
+        <li><button class="btn btn-link navbar-btn"(click)="showLogInModal()">Log In</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>

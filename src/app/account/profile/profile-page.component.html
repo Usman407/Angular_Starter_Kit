@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Your Todo List</h1>
+    <ul class="list-group">
+        <div *ngFor="let todo of (todos$ | async)" >
+            <li class="list-group-item" *ngIf="todo.uid">
+                <app-todo [todo]="todo"></app-todo>
+            </li>
+        </div>
+        <li class="list-group-item">
+            <app-todo-edit [cancelable]="false"></app-todo-edit>
+        </li>
+    </ul>
+</div>

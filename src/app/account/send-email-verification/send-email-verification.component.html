@@ -1,0 +1,7 @@
+<form novalidate (submit)="send()">
+    <app-submit-button *ngIf="!(formState$ | async).successMessage" [requesting]="(formState$ | async).isRequesting">
+        Send verification email
+    </app-submit-button>
+    <span>{{(formState$ | async).successMessage}}</span>
+    <span>{{(formState$ | async).failureMessage}}</span>
+</form>
