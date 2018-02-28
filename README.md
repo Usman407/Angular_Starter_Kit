@@ -2,20 +2,11 @@
 
 # Angular 2 Firebase App
 
-An app boilerplate using:
-
-- [Angular 4](https://github.com/search?q=topic%3Aangular+org%3Aangular&type=Repositories)
-- [Angular CLI](https://github.com/angular/angular-cli)
-- [Firebase (angularfire2)](https://github.com/angular/angularfire2)
-- [Ngrx Store](https://github.com/ngrx/store) and [Ngrx Effects](https://github.com/ngrx/effects)
-
 Featuring:
 
 - A full authentication pipeline including both Google and email authentication
 - User accounts
 - Business logic (using todos as an example)
-
-*[View the demo](https://adviewer-73e3f.firebaseapp.com/)*
 
 ## Motivation
 
@@ -27,7 +18,7 @@ The template is designed to be easy to build upon and extend to suit your app.
 
 ```bash
 # Clone the repo
-git clone https://github.com/bave8672/angular-firebase-starter.git
+git clone https://github.com/Usman407/Angular_Starter_Kit.git
 
 # Change directory to repo
 cd angular-firebase-starter
@@ -47,14 +38,6 @@ Navigate to [http://localhost:4200/](http://localhost:4200/) in your browser
 ## Highlights
 
 The following sections briefly cover the most important features of this starter app.
-
-### Ngrx integration
-
-All app state is managed via the redux pattern, using the [Ngrx Store](https://github.com/ngrx/store) implementation. Components allow the UI to fire actions, and contain minial business logic.
-
-The store is architected similarly to the ngrx [example app](https://github.com/ngrx/example-app), with the global reducer composed from several sub-reducers to manage separate concerns.
-
-[Effects](https://github.com/ngrx/effects) are used to handle asynchronous state events, such as interacting with the firebase auth and db services.
 
 ### Firebase authentication
 
@@ -107,8 +90,3 @@ npm run test
 # Debug unit tests in Chrome
 npm run test:debug
 ```
-
-Planned:
-
-- Better test coverage (currently ~70%)
-- E2E Tests
